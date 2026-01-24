@@ -2,4 +2,4 @@
 
 This is the earlist prototype of the CLUP map project
 visit it here https://joshdels.github.io/next-js-maplibre-urban-planning/prototype/
-![Alt text](image_url "prototype/data/image/clup_webmapv1.PNG")
+![Alt text](image_url "data/image/clup_webmapv1.PNG")
