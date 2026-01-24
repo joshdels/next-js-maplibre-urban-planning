@@ -14,7 +14,7 @@ map.addControl(
     showZoom: true,
     showCompass: false,
   }),
-  "bottom-right",
+  "top-left",
 );
 
 function addGeojsonLayer(
@@ -140,6 +140,28 @@ function addGeojsonLayer(
       container.appendChild(div);
     }
   }
+
+  map.on("click", layerId, (e) => {
+  const feature = e.features[0];
+  if (!feature) return;
+
+  const popupContent = Object.entries(feature.properties || {})
+    .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
+    .join("<br>");
+
+  new maplibregl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML(popupContent)
+    .addTo(map);
+});
+
+// Change cursor when hovering
+map.on("mouseenter", layerId, () => {
+  map.getCanvas().style.cursor = "pointer";
+});
+map.on("mouseleave", layerId, () => {
+  map.getCanvas().style.cursor = "";
+});
 }
 
 map.on("load", () => {
@@ -213,3 +235,4 @@ map.on("load", () => {
     "layers",
   );
 });
+
