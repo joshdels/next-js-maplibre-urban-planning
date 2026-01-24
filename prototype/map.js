@@ -155,7 +155,6 @@ function addGeojsonLayer(
     .addTo(map);
 });
 
-// Change cursor when hovering
 map.on("mouseenter", layerId, () => {
   map.getCanvas().style.cursor = "pointer";
 });
@@ -232,7 +231,7 @@ map.on("load", () => {
     },
     "circle",
     true,
-    "layers",
+    "layers", 
   );
 });
 
