@@ -26,6 +26,7 @@ function addGeojsonLayer(
   geomType = "fill",
   fit = false,
   labelContainerId = null,
+  colorDefault="#4d4d4d",
 ) {
   // 1️⃣ Add the source
   map.addSource(id, {
@@ -41,7 +42,7 @@ function addGeojsonLayer(
         "match",
         ["get", category],
         ...Object.entries(colorMap).flat(),
-        "#575757",
+        colorDefault,
       ],
       "fill-opacity": 1,
       "fill-outline-color": "#000",
@@ -52,7 +53,7 @@ function addGeojsonLayer(
         "match",
         ["get", category],
         ...Object.entries(colorMap).flat(),
-        "#ccc",
+        colorDefault,
       ],
       "line-width": 3,
     };
@@ -62,7 +63,7 @@ function addGeojsonLayer(
         "match",
         ["get", category],
         ...Object.entries(colorMap).flat(),
-        "red",
+        colorDefault,
       ],
       "circle-radius": 6,
       "circle-stroke-width": 1,
@@ -142,25 +143,22 @@ function addGeojsonLayer(
   }
 
   map.on("click", layerId, (e) => {
-  const feature = e.features[0];
-  if (!feature) return;
+    const feature = e.features[0];
+    if (!feature) return;
 
-  const popupContent = Object.entries(feature.properties || {})
-    .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
-    .join("<br>");
+    const popupContent = Object.entries(feature.properties || {})
+      .map(([key, value]) => `<strong>${key}:</strong> ${value}`)
+      .join("<br>");
 
-  new maplibregl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML(popupContent)
-    .addTo(map);
-});
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupContent).addTo(map);
+  });
 
-map.on("mouseenter", layerId, () => {
-  map.getCanvas().style.cursor = "pointer";
-});
-map.on("mouseleave", layerId, () => {
-  map.getCanvas().style.cursor = "";
-});
+  map.on("mouseenter", layerId, () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+  map.on("mouseleave", layerId, () => {
+    map.getCanvas().style.cursor = "";
+  });
 }
 
 map.on("load", () => {
@@ -171,7 +169,6 @@ map.on("load", () => {
     "type",
     {
       "industrial forest plantation": "#2F7302",
-      "forest reserved": "#1D4601",
     },
     "fill",
     true,
@@ -195,11 +192,11 @@ map.on("load", () => {
     map,
     "agriculture",
     "geojson/agriculture.geojson",
-    "Varieties",
+    "type",
     {
-      Rice: "#19C809",
-      Coconut: "#825E59",
-      Corn: "#f1f075",
+      "protection agriculture zone": "#64D62F",
+      "production agriculture zone": "#B7D62F",
+      "agri-industrial zone": "#2FD64E",
     },
     "fill",
     true,
@@ -208,30 +205,70 @@ map.on("load", () => {
 
   addGeojsonLayer(
     map,
-    "road",
-    "geojson/road_system.geojson",
-    "Varieties",
+    "residential",
+    "geojson/existing_residentials.geojson",
+    "Class",
     {
-      Rice: "#f28cb1",
+      "Residential": "#ffff00",
+      "Informal Settlement": "#a5a511",
+      "Socialized Housing": "#ffff2b",
     },
-    "line",
+    "fill",
     true,
     "layers",
   );
 
   addGeojsonLayer(
     map,
+    "commercial",
+    "geojson/existing_commercialandcemetery.geojson",
+    "Urban_Land",
+    {
+      Commercial: "#ff0000",
+    },
+    "fill",
+    true,
+    "layers",
+  );
+
+  addGeojsonLayer(
+    map,
+    "institutional",
+    "geojson/institutional.geojson",
+    "Urban_Land",
+    {
+      Commercial: "#ff0000",
+    },
+    "fill",
+    true,
+    "layers",
+    "blue"
+  );
+
+  addGeojsonLayer(
+    map,
+    "road",
+    "geojson/road_system.geojson",
+    "Type",
+    {
+      "Beach Resort": "#ff9900",
+    },
+    "line",
+    true,
+    "layers",
+    "#ffffff"
+  );
+
+  addGeojsonLayer(
+    map,
     "tourism",
     "geojson/tourism.geojson",
-    "Varieties",
+    "Type",
     {
-      Rice: "#f28cb1",
-      Coconut: "#51bbd6",
-      Corn: "#f1f075",
+      "Beach Resort": "#ff9900"
     },
     "circle",
     true,
-    "layers", 
+    "layers",
   );
 });
-
