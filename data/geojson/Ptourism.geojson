@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "Ptourism",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 0, "Name": "Che-Tsu Swimming Pool", "Facilities": "Picnic Hut, Function Hall", "HowtoReach": "Land Travel", "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.31102194045171, 7.453349853380801 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Keing Beach", "Facilities": "Board Walk, Cottages, Logging House, Function Hall", "HowtoReach": "Land, Water", "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.307253333354481, 7.453226284950831 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Panikian Island", "Facilities": "Cottages, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.328804007796137, 7.373343004428239 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Benuel Beach", "Facilities": "Cottages, Logging House, Own Island, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.411531073262353, 7.35924533379104 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Puting Balas Beach", "Facilities": "Cottages, Logging House, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.397589473531198, 7.363599337194835 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Aking Beach", "Facilities": "Cottages, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.393540825133726, 7.369832184496644 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "White Sand Beach", "Facilities": "Cottages, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.387517661904639, 7.374508297926358 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Parish Beach", "Facilities": "Boad Walk, Cottages, Loging House", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.320448281119084, 7.444267842792507 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Sayong Sealine Beach", "Facilities": "Cottages", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.322021593561061, 7.442504658748018 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Brent Beach Resort", "Facilities": "Board Walk, Cottages, Loging House", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.323419200324949, 7.429129455333666 ] } },
+{ "type": "Feature", "properties": { "id": 0, "Name": "Atong Beach", "Facilities": "Cottages, Function Hall", "HowtoReach": null, "Type": "Beach Resort" }, "geometry": { "type": "Point", "coordinates": [ 123.326204122896897, 7.421926450328676 ] } }
+]
+}
