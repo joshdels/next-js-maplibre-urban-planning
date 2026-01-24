@@ -52,7 +52,7 @@ def convert_to_geojson(path, output_dir):
             gdf = gpd.read_file(path, layer=layer_name)
             gdf = gdf.to_crs(epsg=4326)
             safe_name = layer_name.lower().replace(" ", "_").replace("&", "and")
-            gdf.to_file(output_dir / f"P{safe_name}.geojson", driver="GeoJSON")
+            gdf.to_file(output_dir / f"{safe_name}.geojson", driver="GeoJSON")
 
         except Exception as e:
             print(f" Failed layer {layer_name}: {e}")
