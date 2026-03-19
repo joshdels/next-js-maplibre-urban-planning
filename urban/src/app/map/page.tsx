@@ -1,11 +1,18 @@
+import FloatingDashboard from "@/features/map/FloatingDashboard";
 import MapComponent from "@/features/map/MapComponents";
 import MapNavbar from "@/features/map/MapNavbar";
 
 export default function MapPage() {
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <MapNavbar />
-      <MapComponent />
+
+      <div className="relative flex-1">
+        <MapComponent />
+        <div className="absolute top-0 left-0 z-50">
+          <FloatingDashboard />
+        </div>
+      </div>
     </div>
-  )
+  );
 }

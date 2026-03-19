@@ -1,12 +1,11 @@
-// components/Map.tsx
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import maplibregl, { Map } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import styles from "./Map.module.css";
 
-const MapComponent = () => {
+export default function MapComponent() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
   const [lng] = useState(-74.5);
@@ -20,7 +19,8 @@ const MapComponent = () => {
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: "https://demotiles.maplibre.org/style.json",
+      style:
+        "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json",
       center: [lng, lat],
       zoom: zoom,
     });
@@ -32,7 +32,8 @@ const MapComponent = () => {
     };
   }, [lng, lat, zoom]);
 
-  return <div className={styles["map-container"]} ref={mapContainer} />;
-};
+  return (
+    <div className={styles["map-container"]} ref={mapContainer} />
 
-export default MapComponent;
+  );
+}
