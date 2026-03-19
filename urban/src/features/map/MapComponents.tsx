@@ -17,6 +17,15 @@ export default function MapComponent() {
     if (map.current) return;
     if (!mapContainer.current) return;
 
+    // map.current = new maplibregl.Map({
+    //   container: mapContainer.current,
+    //   style:
+    //     "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json",
+    //   center: [lng, lat],
+    //   zoom: zoom,
+    //   attributionControl: false,
+    // });
+
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       center: [lng, lat],
