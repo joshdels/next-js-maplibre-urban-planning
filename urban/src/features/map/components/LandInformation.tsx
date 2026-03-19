@@ -4,11 +4,11 @@ import { useState } from "react";
 import { mockParcels, Parcel, buildLandInformation } from "@/mock/parcels";
 
 export default function LandInformation() {
-  const [selectedParcel, setSelectedParcel] = useState<Parcel>(mockParcels[0]);
+  const [selectedParcel, setSelectedParcel] = useState<Parcel>(mockParcels[1]);
   const landInformationData = buildLandInformation(selectedParcel);
 
   return (
-    <div className="">
+    <div className="my-8 pr-5">
       <section className="text-lg font-black mb-5">Land Information</section>
 
       {landInformationData.map((item, index) => (

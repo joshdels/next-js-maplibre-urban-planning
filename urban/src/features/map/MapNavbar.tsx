@@ -1,5 +1,4 @@
 import {
-  analysis24,
   map24,
   fileReport24,
   signOut24,
@@ -13,17 +12,11 @@ export default function MapNavbar() {
       <div className="flex items-center gap-10">
         <div className="flex flex-col items-center cursor-pointer hover:text-blue-600">
           <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={analysis24} />
+            <path d={map24} />
           </svg>
           <span className="text-sm mt-1">Discover Map</span>
         </div>
 
-        <div className="flex flex-col items-center cursor-pointer hover:text-blue-600">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={map24} />
-          </svg>
-          <span className="text-sm mt-1">My Map</span>
-        </div>
 
         <div className="flex flex-col items-center cursor-pointer hover:text-blue-600">
           <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
