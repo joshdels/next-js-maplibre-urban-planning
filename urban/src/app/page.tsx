@@ -1,7 +1,7 @@
-import FloatingDashboard from "@/features/map/FloatingDashboard";
+import FloatingDashboard from "@/features/map/floating/FloatingDashboard";
 import MapComponent from "@/features/map/MapComponents";
-import MapNavbar from "@/features/map/MapNavbar";
-import SearchPanel from "@/features/map/SearchSection";
+import MapNavbar from "@/features/map/navbar/MapNavbar";
+import SearchPanel from "@/features/map/search/SearchSection";
 
 export default function MapPage() {
   return (

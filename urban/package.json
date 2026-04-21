@@ -14,7 +14,7 @@
     "@esri/calcite-ui-icons": "^4.4.0",
     "@mui/material": "^7.3.9",
     "maplibre-gl": "^5.20.2",
-    "next": "16.1.7",
+    "next": "^16.2.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -26,6 +26,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
+    "stylelint": "^17.8.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

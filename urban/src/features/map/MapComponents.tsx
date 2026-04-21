@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRef, useEffect, useState } from "react";
-import maplibregl, { Map } from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
-import styles from "./Map.module.css";
+import { useRef, useEffect, useState } from 'react';
+import maplibregl, { Map } from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import styles from './Map.module.css';
 
 export default function MapComponent() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -17,15 +17,6 @@ export default function MapComponent() {
     if (map.current) return;
     if (!mapContainer.current) return;
 
-    // map.current = new maplibregl.Map({
-    //   container: mapContainer.current,
-    //   style:
-    //     "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json",
-    //   center: [lng, lat],
-    //   zoom: zoom,
-    //   attributionControl: false,
-    // });
-
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       center: [lng, lat],
@@ -34,46 +25,46 @@ export default function MapComponent() {
       style: {
         version: 8,
         sources: {
-          "arcgis-tiles": {
-            type: "raster",
+          'arcgis-tiles': {
+            type: 'raster',
             tiles: [
-              "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+              'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
             ],
             tileSize: 256,
           },
         },
         layers: [
           {
-            id: "arcgis-layer",
-            type: "raster",
-            source: "arcgis-tiles",
+            id: 'arcgis-layer',
+            type: 'raster',
+            source: 'arcgis-tiles',
           },
         ],
       },
     });
 
-    map.current.addControl(new maplibregl.NavigationControl(), "top-right");
+    map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-    map.current.on("load", async () => {
+    map.current.on('load', async () => {
       try {
-        const geojsonUrl = "/sample_web.geojson";
+        const geojsonUrl = '/sample_web.geojson';
 
         const res = await fetch(geojsonUrl);
         const data = await res.json();
 
-        map.current?.addSource("layer-data", {
-          type: "geojson",
+        map.current?.addSource('layer-data', {
+          type: 'geojson',
           data: data,
         });
 
         map.current?.addLayer({
-          id: "my-data-layer",
-          type: "line",
-          source: "layer-data",
+          id: 'my-data-layer',
+          type: 'line',
+          source: 'layer-data',
           minzoom: 12,
           paint: {
-            "line-color": "orange",
-            "line-width": 2,
+            'line-color': 'orange',
+            'line-width': 2,
           },
         });
 
@@ -86,8 +77,8 @@ export default function MapComponent() {
           const addCoords = (coords: any) => {
             if (
               Array.isArray(coords) &&
-              typeof coords[0] === "number" &&
-              typeof coords[1] === "number"
+              typeof coords[0] === 'number' &&
+              typeof coords[1] === 'number'
             ) {
               bounds.extend(coords);
             } else if (Array.isArray(coords)) {
@@ -104,10 +95,10 @@ export default function MapComponent() {
             duration: 1000,
           });
         } else {
-          console.warn("Bounds empty — check GeoJSON");
+          console.warn('Bounds empty — check GeoJSON');
         }
       } catch (err) {
-        console.error("GeoJSON error:", err);
+        console.error('GeoJSON error:', err);
       }
     });
 
@@ -117,5 +108,5 @@ export default function MapComponent() {
     };
   }, [lng, lat, zoom]);
 
-  return <div className={styles["map-container"]} ref={mapContainer} />;
+  return <div className={styles['map-container']} ref={mapContainer} />;
 }

@@ -1,0 +1,32 @@
+.page-wrapper {
+  border: 1px solid var(--secondary);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.page-wrapper-container {
+  max-width: 1550px;
+  padding: 0 2rem;
+  width: 100%;
+  z-index: 50;
+}
+
+@media screen and (width >= 480px) {
+  .page-wrapper-grid {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .page-wrapper-grid {
+    padding: 0 3rem;
+  }
+}
+
+@media screen and (width >= 1200px) {
+  .page-wrapper-grid {
+    padding: 0 5rem;
+  }
+}

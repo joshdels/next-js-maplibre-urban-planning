@@ -1,0 +1,15 @@
+.container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.navigation-buttons {
+  align-items: center;
+  display: flex;
+  gap: 2.5rem;
+}

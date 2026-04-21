@@ -1,7 +1,7 @@
-import { x24 } from "@esri/calcite-ui-icons";
-import LandInformation from "./components/LandInformation";
-import FloatingSideBar from "./components/FloatingSideBar";
-import OwnerInformation from "./components/OwnerInformation";
+import { x24 } from '@esri/calcite-ui-icons';
+import FloatingSideBar from './FloatingSideBar';
+import OwnerInformation from './OwnerInformation';
+import LandInformation from './LandInformation';
 
 export default function FloatingDashboard() {
   return (

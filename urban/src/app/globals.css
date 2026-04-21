@@ -1,3 +1,7 @@
+@import url('../shared/styles/wrappers.css');
+@import url('../shared/styles/container.css');
+@import url('../shared/styles/button.css');
+@import url('../shared/styles/themes.css');
 @import "tailwindcss";
 
 :root {
@@ -12,12 +16,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
@@ -25,8 +23,3 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer components {
-  .btn-primary {
-    @apply px-4 py-2 rounded-lg font-medium bg-blue-500 text-white hover:bg-blue-600;
-  }
-}
