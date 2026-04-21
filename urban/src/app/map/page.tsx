@@ -1,6 +1,7 @@
 import FloatingDashboard from '@/features/map/floating/FloatingDashboard';
 import MapComponent from '@/features/map/MapComponents';
-import MapNavbar from '@/features/map/MapNavbar';
+import MapNavbar from '@/features/map/navbar/MapNavbar';
+
 
 export default function MapPage() {
   return (
