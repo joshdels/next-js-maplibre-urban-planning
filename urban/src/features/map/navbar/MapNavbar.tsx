@@ -5,6 +5,7 @@ import {
   fileReport24,
   signOut24,
   mapContents24,
+  organization24,
 } from '@esri/calcite-ui-icons';
 
 export default function MapNavbar() {
@@ -13,6 +14,13 @@ export default function MapNavbar() {
       <h1 className="text-xl font-bold">Urban Lands</h1>
 
       <div className={styles['navigation-buttons']}>
+        <div className="navbar-button">
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d={organization24} />
+          </svg>
+          <span className="text-sm mt-1">Office</span>
+        </div>
+
         <div className="navbar-button">
           <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d={map24} />
@@ -31,7 +39,7 @@ export default function MapNavbar() {
           <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d={fileReport24} />
           </svg>
-          <span className="text-sm mt-1">Reports</span>
+          <span className="text-sm mt-1">Report</span>
         </div>
       </div>
 

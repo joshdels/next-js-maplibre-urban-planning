@@ -1,0 +1,30 @@
+.container {
+  width: 35rem;
+  height: 78vh;
+  border-radius: var(--lid-radius-md);
+  display: flex;
+  flex-direction: row;
+  margin: 1.25rem;
+}
+
+.floating-sidebar {
+  width: 8rem;
+  background-color: var(--lid-gray-light);
+  padding: 0.5rem;
+  border-radius: var(--lid-radius-md);
+}
+
+.floating-main {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: var(--lid-radius-md);
+  background-color: var(--lid-white);
+}
+
+.floating-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+

@@ -32,3 +32,34 @@
 .navbar-button-logout:hover {
   color: var(--lid-red);
 }
+
+.floating-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  border-radius: var(--lid-radius-sm);
+  padding: 1rem;
+}
+
+.floating-button:hover {
+  background-color: var(--lid-blue);
+}
+
+.btn-close {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--lid-gray-light);
+  padding: 0.1rem;
+}
+
+.btn-close:hover {
+  color: var(--lid-red);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
