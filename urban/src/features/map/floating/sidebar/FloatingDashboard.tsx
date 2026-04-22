@@ -1,7 +1,7 @@
 import { x24 } from '@esri/calcite-ui-icons';
 import FloatingSideBar from './FloatingSideBar';
-import OwnerInformation from './OwnerInformation';
-import LandInformation from './LandInformation';
+import OwnerInformation from '../content/OwnerInformation';
+import LandInformation from '../content/LandInformation';
 import styles from './FloatingDashboard.module.css';
 
 export default function FloatingDashboard() {
@@ -15,7 +15,7 @@ export default function FloatingDashboard() {
         <section className={styles['floating-heading']}>
           <h1 className="font-large">Parcel Overview</h1>
           <div className="btn-close">
-            <svg className="" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
               <path d={x24} />
             </svg>
           </div>

@@ -8,39 +8,41 @@ import {
   organization24,
 } from '@esri/calcite-ui-icons';
 
+const icons = {
+  office: organization24,
+  parcel: map24,
+  zone: mapContents24,
+  report: fileReport24,
+};
+
+type NavButtonProps = {
+  label: string;
+  icon: keyof typeof icons;
+};
+
+const navbuttons: NavButtonProps[] = [
+  { label: 'Office', icon: 'office' },
+  { label: 'Parcel Map', icon: 'parcel' },
+  { label: 'Land Zone', icon: 'zone' },
+  { label: 'Report', icon: 'report' },
+];
+
 export default function MapNavbar() {
   return (
     <nav className={styles.container}>
       <h1 className="text-xl font-bold">Urban Lands</h1>
 
       <div className={styles['navigation-buttons']}>
-        <div className="navbar-button">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={organization24} />
-          </svg>
-          <span className="text-sm mt-1">Office</span>
-        </div>
-
-        <div className="navbar-button">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={map24} />
-          </svg>
-          <span className="text-sm mt-1">Parcel Map</span>
-        </div>
-
-        <div className="navbar-button">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={mapContents24} />
-          </svg>
-          <span className="text-sm mt-1">Land Zone</span>
-        </div>
-
-        <div className="navbar-button">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d={fileReport24} />
-          </svg>
-          <span className="text-sm mt-1">Report</span>
-        </div>
+        {navbuttons.map((nav) => (
+          <>
+            <div className="navbar-button">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d={icons[nav.icon]} />
+              </svg>
+              <span className="text-sm mt-1">{nav.label}</span>
+            </div>
+          </>
+        ))}
       </div>
 
       <div className="navbar-button-logout">

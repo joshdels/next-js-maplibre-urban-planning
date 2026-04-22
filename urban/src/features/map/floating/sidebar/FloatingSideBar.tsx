@@ -1,8 +1,10 @@
-import styles from './FloatingSideBar.module.css';
+"use client"
 
 import { clearSelection24, plans24, waterDrop24 } from '@esri/calcite-ui-icons';
+import { useTabStore } from '@/store/useTabStore';
+import styles from './FloatingSideBar.module.css';
 
-export interface NavigationProps {
+interface NavigationProps {
   label: string;
   icon: string;
 }
@@ -14,13 +16,16 @@ const navigations: NavigationProps[] = [
 ];
 
 export default function FloatingSideBar() {
+  const { isOpen, setIsOpen, activeTab } = useTabStore();
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className={styles.container}>
       {navigations.map((nav) => (
-        <div
-          key={nav.label}
-          className="floating-button"
-        >
+        <div key={nav.label} className="floating-button">
           <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
             <path d={nav.icon} />
           </svg>
@@ -28,6 +33,8 @@ export default function FloatingSideBar() {
           <span className="font-medium">{nav.label}</span>
         </div>
       ))}
+
+      
     </div>
   );
 }

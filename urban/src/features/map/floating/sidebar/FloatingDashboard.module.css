@@ -11,13 +11,13 @@
   width: 8rem;
   background-color: var(--lid-gray-light);
   padding: 0.5rem;
-  border-radius: var(--lid-radius-md);
+  border-radius: var(--lid-radius-md) 0 0 var(--lid-radius-md);
 }
 
 .floating-main {
   flex: 1;
   padding: 1.5rem;
-  border-radius: var(--lid-radius-md);
+  border-radius: 0 var(--lid-radius-md) var(--lid-radius-md) 0;
   background-color: var(--lid-white);
 }
 

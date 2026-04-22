@@ -53,6 +53,7 @@
   border-radius: 50%;
   background-color: var(--lid-gray-light);
   padding: 0.1rem;
+  color: black;
 }
 
 .btn-close:hover {

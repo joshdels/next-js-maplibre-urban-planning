@@ -1,4 +1,4 @@
-import FloatingDashboard from '@/features/map/floating/FloatingDashboard';
+import FloatingDashboard from '@/features/map/floating/sidebar/FloatingDashboard';
 import MapComponent from '@/features/map/MapComponents';
 import MapNavbar from '@/features/map/navbar/MapNavbar';
 import SearchPanel from '@/features/map/search/SearchSection';
