@@ -92,7 +92,7 @@ export default function MapComponent() {
         if (!bounds.isEmpty()) {
           map.current?.fitBounds(bounds, {
             padding: 50,
-            duration: 1000,
+            duration: 50,
           });
         } else {
           console.warn('Bounds empty — check GeoJSON');

@@ -21,7 +21,7 @@ export default function FloatingSideBar() {
           key={nav.label}
           className="floating-button"
         >
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
             <path d={nav.icon} />
           </svg>
 

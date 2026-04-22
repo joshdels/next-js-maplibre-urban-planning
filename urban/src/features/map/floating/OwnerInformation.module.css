@@ -1,0 +1,23 @@
+.container {
+  margin-block: 2rem;
+  padding-right: 1.25rem;
+}
+
+.container h1 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-bottom: 1.25rem;
+}
+
+.data-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--lid-blue);
+}
