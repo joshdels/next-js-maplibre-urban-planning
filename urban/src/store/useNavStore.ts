@@ -1,15 +1,16 @@
 import { create } from 'zustand';
 
-interface TabStore {
-  activeTab: string;
-  isOpen: boolean;
-  setActiveTab: (tab: string) => void;
-  setIsOpen: (status: boolean) => void;
+interface NavStoreProps {
+  activeNav: string;
+  setActiveNav: (nav: string) => void;
+  handleNavClick: (nav: string) => void;
 }
 
-export const useTabStore = create<TabStore>((set) => ({
-  activeTab: '',
-  isOpen: false,
-  setActiveTab: (tab: string) => set({ activeTab: tab }),
-  setIsOpen: (status: boolean) => set({ isOpen: status }),
+export const useNavStore = create<NavStoreProps>((set) => ({
+  activeNav: '',
+  setActiveNav: (nav: string) => set({ activeNav: nav }),
+  handleNavClick: (nav) =>
+    set((state) => ({
+      activeNav: state.activeNav === nav ? '' : nav,
+    })),
 }));

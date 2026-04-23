@@ -12,9 +12,26 @@
   background-color: var(--lid-gray-light);
   padding: 0.5rem;
   border-radius: var(--lid-radius-md) 0 0 var(--lid-radius-md);
+  transition: all 0.25s ease;
+}
+
+.floating-sidebar.close {
+  border-radius: var(--lid-radius-md);
+  transition: all 0.25s ease;
+}
+
+.floating-sidebar.close {
+  border-radius: var(--lid-radius-md);
 }
 
 .floating-main {
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+.floating-main.active {
+  opacity: 1;
+  display: block;
   flex: 1;
   padding: 1.5rem;
   border-radius: 0 var(--lid-radius-md) var(--lid-radius-md) 0;
@@ -26,5 +43,3 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
-

@@ -1,40 +1,45 @@
-"use client"
+'use client';
 
-import { clearSelection24, plans24, waterDrop24 } from '@esri/calcite-ui-icons';
+import { clearSelection24, download24, exclamationMarkTriangle24, legend24, plans24, waterDrop24 } from '@esri/calcite-ui-icons';
 import { useTabStore } from '@/store/useTabStore';
 import styles from './FloatingSideBar.module.css';
 
 interface NavigationProps {
   label: string;
+  tab: string;
   icon: string;
 }
 
 const navigations: NavigationProps[] = [
-  { label: 'Overview', icon: clearSelection24 },
-  { label: 'Boundaries', icon: plans24 },
-  { label: 'Water', icon: waterDrop24 },
+  { label: 'Overview', tab: 'overview', icon: clearSelection24 },
+  { label: 'Legend', tab: 'legend', icon: legend24 },
+  { label: 'Boundaries', tab: 'boundaries', icon: plans24 },
+  { label: 'Hazard', tab: 'hazard', icon: exclamationMarkTriangle24 },
+  { label: 'Download', tab: 'download', icon: download24 },
 ];
 
 export default function FloatingSideBar() {
-  const { isOpen, setIsOpen, activeTab } = useTabStore();
-
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  const { handleTabClick, activeTab } = useTabStore();
 
   return (
     <div className={styles.container}>
-      {navigations.map((nav) => (
-        <div key={nav.label} className="floating-button">
-          <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d={nav.icon} />
-          </svg>
+      {navigations.map((nav) => {
+        const isActive = activeTab === nav.tab;
 
-          <span className="font-medium">{nav.label}</span>
-        </div>
-      ))}
+        return (
+          <button
+            key={nav.label}
+            className={`floating-button ${isActive ? 'active' : ''}`}
+            onClick={() => handleTabClick(nav.tab)}
+          >
+            <svg className="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d={nav.icon} />
+            </svg>
 
-      
+            <span className="font-medium">{nav.label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }
