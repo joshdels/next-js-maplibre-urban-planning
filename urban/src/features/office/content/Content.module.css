@@ -1,13 +1,25 @@
 .container {
   background-color: var(--lid-off-white);
   display: grid;
+  gap: 2rem;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 3rem;
+  width: calc(100vw - 5rem);
+}
+
+.container-open {
+  background-color: var(--lid-off-white);
+  display: grid;
   gap: 4rem;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   height: calc(100vh - 100px);
   overflow-y: auto;
   padding: 3rem;
-  width: calc(100vw - 20rem);
+  width: calc(100vw - 15rem);
 }
 
 .container-new {

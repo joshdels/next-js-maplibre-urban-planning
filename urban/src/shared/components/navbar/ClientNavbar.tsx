@@ -17,7 +17,7 @@ export default function ClientNavbar() {
       <div className={styles['navigation-buttons']}>
         {navbuttons.map((nav, index) => (
           <Link
-            href={nav.route}
+            href={nav.route ?? '/'}
             className={`navbar-button ${activeNav === nav.label ? 'active' : ''}`}
             key={index}
             onClick={() => handleNavClick(nav.label)}

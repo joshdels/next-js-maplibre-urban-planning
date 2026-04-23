@@ -1,12 +1,17 @@
+'use client';
+
 import { organization24 } from '@esri/calcite-ui-icons';
 import OfficeCard from '../card/OfficeCard';
 import styles from './Content.module.css';
 import { offices } from '@/mock/offices';
+import { useSidebarStore } from '@/store/useSidebarStore';
 
 export default function Content() {
+  const { isOpen } = useSidebarStore();
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={`${isOpen ? styles["container-open"]: styles.container}`}>
         {offices?.map((item, index) => (
           <OfficeCard key={index} {...item} />
         ))}
