@@ -1,5 +1,5 @@
 import FloatingDashboard from '@/features/map/floating/sidebar/FloatingDashboard';
-import MapComponent from '@/features/map/MapComponents';
+import MapComponent from '@/features/map/map/MapComponents';
 import SearchPanel from '@/features/map/search/SearchSection';
 
 import styles from './page.module.css';

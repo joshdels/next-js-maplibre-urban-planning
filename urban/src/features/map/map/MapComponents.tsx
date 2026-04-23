@@ -5,6 +5,8 @@ import maplibregl, { Map } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.css';
 
+import MapControls from '../../../shared/components/map/MapControls';
+
 export default function MapComponent() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
@@ -42,8 +44,6 @@ export default function MapComponent() {
         ],
       },
     });
-
-    map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
     map.current.on('load', async () => {
       try {
@@ -108,5 +108,13 @@ export default function MapComponent() {
     };
   }, [lng, lat, zoom]);
 
-  return <div className={styles['map-container']} ref={mapContainer} />;
+  return (
+    <>
+      <div className={styles['map-container']} ref={mapContainer} />
+      <MapControls
+        onZoomIn={() => map.current?.zoomIn()}
+        onZoomOut={() => map.current?.zoomOut()}
+      />
+    </>
+  );
 }

@@ -1,0 +1,110 @@
+.overlay {
+  background-color: gray;
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+  width: 24rem;
+}
+
+.info {
+  align-items: center;
+  bottom: 15px;
+  display: flex;
+  gap: 10px;
+  left: 15px;
+  pointer-events: auto;
+  position: absolute;
+}
+
+.brand {
+  display: flex;
+}
+
+.title {
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 10px;
+}
+
+.dot {
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  color: var(--lid-blue);
+  display: flex;
+  justify-content: center;
+  padding: 0.1rem 0.5rem;
+}
+
+.coords {
+  background: white;
+  border-radius: 5px;
+  color: #333;
+  font-size: 13px;
+  padding: 0.5rem;
+}
+
+.controls {
+  bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: auto;
+  position: absolute;
+  right: 15px;
+}
+
+.zoom {
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom-top {
+  align-items: center;
+  background: var(--lid-white);
+  border: 0;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.zoom-top:hover {
+  background: var(--lid-gray-light);
+}
+
+.zoom-bot {
+  align-items: center;
+  background: var(--lid-white);
+  border: 0;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.zoom-bot:hover {
+  background: var(--lid-gray-light);
+}
+
+.btn {
+  align-items: center;
+  background: var(--lid-white);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.btn:hover {
+  background: var(--lid-gray-light);
+}
