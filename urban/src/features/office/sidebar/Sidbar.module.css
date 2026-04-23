@@ -1,0 +1,8 @@
+.sidebar-container {
+  background-color: var(--lid-gray-light);
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 100px);
+  padding: 2rem;
+  width: 20rem;
+}

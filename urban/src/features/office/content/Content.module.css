@@ -1,0 +1,29 @@
+.container {
+  background-color: var(--lid-off-white);
+  display: grid;
+  gap: 4rem;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 3rem;
+  width: calc(100vw - 20rem);
+}
+
+.container-new {
+  align-items: center;
+  background-color: var(--lid-white);
+  border: 2px dashed #ccc;
+  border-radius: var(--lid-radius-md);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 20rem;
+  justify-content: center;
+}
+
+.container-new:hover {
+  color: var(--lid-blue);
+  transition: all 0.2s ease-in-out;
+}

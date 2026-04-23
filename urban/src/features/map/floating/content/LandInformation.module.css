@@ -10,11 +10,10 @@
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
   color: var(--lid-blue);
+  height: 24px;
+  width: 24px;
 }
-
 
 .data-content {
   display: flex;
@@ -22,4 +21,3 @@
   gap: 1.25rem;
   margin-bottom: 0.75rem;
 }
-

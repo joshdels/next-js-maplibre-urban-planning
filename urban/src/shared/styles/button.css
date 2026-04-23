@@ -13,6 +13,7 @@
 
 .navbar-button {
   align-items: center;
+  border-bottom: 2px solid var(--lid-white);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -21,8 +22,8 @@
 }
 
 .navbar-button.active {
-  color: var(--lid-blue);
   border-bottom: 2px solid;
+  color: var(--lid-blue);
 }
 
 .navbar-button:hover {
@@ -41,14 +42,14 @@
 }
 
 .floating-button {
+  align-items: center;
+  border-radius: var(--lid-radius-sm);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
-  border-radius: var(--lid-radius-sm);
   padding: 1rem;
+  transition: all 0.25s ease-in-out;
 }
 
 .floating-button:hover {
@@ -60,18 +61,13 @@
 }
 
 .btn-close {
-  cursor: pointer;
-  border-radius: 50%;
   background-color: var(--lid-gray-light);
-  padding: 0.1rem;
+  border-radius: 50%;
   color: black;
+  cursor: pointer;
+  padding: 0.1rem;
 }
 
 .btn-close:hover {
   color: var(--lid-red);
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
 }

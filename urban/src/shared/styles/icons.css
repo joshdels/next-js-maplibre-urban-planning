@@ -1,0 +1,15 @@
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.icon-blue {
+  color: var(--lid-blue);
+  height: 24px;
+  width: 24px;
+}
+
+.icon-lg {
+  height: 36px;
+  width: 36px;
+}

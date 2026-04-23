@@ -2,11 +2,12 @@
 
 import { signOut24 } from '@esri/calcite-ui-icons';
 import { navbuttons, icons } from '@/mock/navigation';
-
-import styles from './MapNavbar.module.css';
 import { useNavStore } from '@/store/useNavStore';
 
-export default function MapNavbar() {
+import styles from './ClientNavbar.module.css';
+import Link from 'next/link';
+
+export default function ClientNavbar() {
   const { activeNav, handleNavClick } = useNavStore();
 
   return (
@@ -15,7 +16,8 @@ export default function MapNavbar() {
 
       <div className={styles['navigation-buttons']}>
         {navbuttons.map((nav, index) => (
-          <button
+          <Link
+            href={nav.route}
             className={`navbar-button ${activeNav === nav.label ? 'active' : ''}`}
             key={index}
             onClick={() => handleNavClick(nav.label)}
@@ -24,7 +26,7 @@ export default function MapNavbar() {
               <path d={icons[nav.icon]} />
             </svg>
             <span className="text-sm mt-1">{nav.label}</span>
-          </button>
+          </Link>
         ))}
       </div>
 

@@ -1,18 +1,18 @@
 .container {
-  width: 35rem;
-  height: 78vh;
   border-radius: var(--lid-radius-md);
   display: flex;
   flex-direction: row;
+  height: 78vh;
   margin: 1.25rem;
+  width: 35rem;
 }
 
 .floating-sidebar {
-  width: 8rem;
   background-color: var(--lid-gray-light);
-  padding: 0.5rem;
   border-radius: var(--lid-radius-md) 0 0 var(--lid-radius-md);
+  padding: 0.5rem;
   transition: all 0.25s ease;
+  width: 8rem;
 }
 
 .floating-sidebar.close {
@@ -30,12 +30,12 @@
 }
 
 .floating-main.active {
-  opacity: 1;
+  background-color: var(--lid-white);
+  border-radius: 0 var(--lid-radius-md) var(--lid-radius-md) 0;
   display: block;
   flex: 1;
+  opacity: 1;
   padding: 1.5rem;
-  border-radius: 0 var(--lid-radius-md) var(--lid-radius-md) 0;
-  background-color: var(--lid-white);
 }
 
 .floating-heading {

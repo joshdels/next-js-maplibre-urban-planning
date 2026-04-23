@@ -1,0 +1,36 @@
+.card-container {
+  background-color: var(--lid-white);
+  border-radius: var(--lid-radius-md);
+  display: flex;
+  height: 20rem;
+  padding: 2rem;
+}
+
+.card-container aside {
+  flex: 2;
+}
+
+.card-container main {
+  flex: 3;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  margin: 1rem 0;
+}
+
+.tags {
+  background-color: var(--lid-gray-light);
+  border-radius: var(--lid-radius-pill);
+  font-size: 1rem;
+  padding: 0.25rem 0.8rem;
+}
+
+.contributors {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin: 2rem 0 0.5rem;
+}

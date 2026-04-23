@@ -3,6 +3,7 @@
 @import url('../shared/styles/button.css');
 @import url('../shared/styles/themes.css');
 @import url('../shared/styles/font.css');
+@import url('../shared/styles/icons.css');
 @import 'tailwindcss';
 
 :root {

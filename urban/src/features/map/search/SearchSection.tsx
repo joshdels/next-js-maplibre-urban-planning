@@ -26,7 +26,7 @@ export default function SearchPanel() {
     >
       <input
         type="text"
-        placeholder={`${isOpen ? "Seach by Parcel ID" : "Search"}`}
+        placeholder={`${isOpen ? "Search by Parcel ID" : "Search"}`}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={handleFocus}
