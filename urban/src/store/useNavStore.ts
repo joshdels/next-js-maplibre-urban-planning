@@ -7,7 +7,7 @@ interface NavStoreProps {
 }
 
 export const useNavStore = create<NavStoreProps>((set) => ({
-  activeNav: '',
+  activeNav: 'Parcel Map',
   setActiveNav: (nav: string) => set({ activeNav: nav }),
   handleNavClick: (nav) =>
     set((state) => ({

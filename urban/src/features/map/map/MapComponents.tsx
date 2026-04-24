@@ -1,20 +1,27 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import maplibregl, { Map } from 'maplibre-gl';
+import maplibregl, { Map, LngLatBounds } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.css';
 
 import MapControls from '../../../shared/components/map/MapControls';
+import { useTabStore } from '@/store/useTabStore';
 
 export default function MapComponent() {
+  const { isOpen } = useTabStore();
+
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
+  const boundsRef = useRef<LngLatBounds | null>(null);
 
   const [lng] = useState(-74.5);
   const [lat] = useState(40);
-  const [zoom] = useState(9);
+  const [zoom] = useState(10);
 
+  // =========================
+  // 1. INIT MAP + FIT ONCE
+  // =========================
   useEffect(() => {
     if (map.current) return;
     if (!mapContainer.current) return;
@@ -47,14 +54,12 @@ export default function MapComponent() {
 
     map.current.on('load', async () => {
       try {
-        const geojsonUrl = '/sample_web.geojson';
-
-        const res = await fetch(geojsonUrl);
+        const res = await fetch('/sample_web.geojson');
         const data = await res.json();
 
         map.current?.addSource('layer-data', {
           type: 'geojson',
-          data: data,
+          data,
         });
 
         map.current?.addLayer({
@@ -68,7 +73,11 @@ export default function MapComponent() {
           },
         });
 
-        const bounds = new maplibregl.LngLatBounds();
+        // =========================
+        // BUILD BOUNDS
+        // =========================
+        const bounds = new LngLatBounds();
+        boundsRef.current = bounds;
 
         data.features.forEach((feature: any) => {
           const geom = feature.geometry;
@@ -89,17 +98,28 @@ export default function MapComponent() {
           addCoords(geom.coordinates);
         });
 
+        // =========================
+        // FIT ONCE ONLY (IMPORTANT)
+        // =========================
         if (!bounds.isEmpty()) {
           map.current?.fitBounds(bounds, {
-            padding: 50,
+            padding: {
+              top: 50,
+              bottom: 30,
+              left: 100,
+              right: 30,
+            },
             duration: 0,
           });
-        } else {
-          console.warn('Bounds empty — check GeoJSON');
         }
       } catch (err) {
         console.error('GeoJSON error:', err);
       }
+    });
+
+    map.current.on('mousemove', (e) => {
+      console.log(e.lngLat.lng.toFixed(4));
+      console.log(e.lngLat.lat.toFixed(4));
     });
 
     return () => {
@@ -108,9 +128,24 @@ export default function MapComponent() {
     };
   }, [lng, lat, zoom]);
 
+  useEffect(() => {
+    if (!map.current) return;
+
+    map.current.easeTo({
+      padding: {
+        top: 50,
+        bottom: 30,
+        left: isOpen ? 400 : 100,
+        right: 30,
+      },
+      duration: 300,
+    });
+  }, [isOpen]);
+
   return (
     <>
       <div className={styles['map-container']} ref={mapContainer} />
+
       <MapControls
         onZoomIn={() => map.current?.zoomIn()}
         onZoomOut={() => map.current?.zoomOut()}
