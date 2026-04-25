@@ -1,0 +1,14 @@
+.maplibregl-ctrl-top-right {
+  bottom: 225px !important;
+  right: 16px !important;
+  top: auto !important;
+}
+
+.maplibregl-ctrl-compass {
+  box-shadow: none !important;
+  cursor: pointer !important;
+  height: 38px !important;
+  right: 20px !important;
+  top: auto !important;
+  width: 38px !important;
+}

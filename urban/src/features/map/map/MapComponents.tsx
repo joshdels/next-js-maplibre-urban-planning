@@ -1,159 +1,76 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import maplibregl, { Map, LngLatBounds } from 'maplibre-gl';
+import { useRef, useEffect } from 'react';
+import maplibregl, { Map } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.css';
 
 import MapControls from '../../../shared/components/map/MapControls';
 import { useTabStore } from '@/store/useTabStore';
 import { useMapStore } from '@/store/useMapStore';
+import { useMapInit } from '@/hooks/map/useMapInit';
+import { useGeoJsonLayer } from '@/hooks/map/useGeoJSONlayer';
+import { useMapMouse } from '@/hooks/map/useMapMouse';
+import { useMapPadding } from '@/hooks/map/usePadding';
+import { useZoomToBounds } from '@/hooks/map/useZoomToBounds';
 
 export default function MapComponent() {
   const { isOpen } = useTabStore();
-  const { setLatitude, setLongitude } = useMapStore();
+  const { setLatitude, setLongitude, bounds } = useMapStore();
 
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
-  const boundsRef = useRef<LngLatBounds | null>(null);
 
-  const [lng] = useState(-74.5);
-  const [lat] = useState(40);
-  const [zoom] = useState(10);
+  const lat = 0;
+  const lng = 0;
+  const zoom = 2;
 
-  // =========================
-  // 1. INIT MAP + FIT ONCE
-  // =========================
+  const handleZoomToBounds = () => {
+    useZoomToBounds(map, bounds, isOpen);
+  };
+
+  useGeoJsonLayer(map.current);
+
   useEffect(() => {
-    if (map.current) return;
-    if (!mapContainer.current) return;
+    useGeoJsonLayer;
+    useMapInit(mapContainer.current, map, lng, lat, zoom);
+  }, []);
 
-    map.current = new maplibregl.Map({
-      container: mapContainer.current,
-      center: [lng, lat],
-      zoom: zoom,
-      attributionControl: false,
-      style: {
-        version: 8,
-        sources: {
-          'arcgis-tiles': {
-            type: 'raster',
-            tiles: [
-              'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            ],
-            tileSize: 256,
-          },
-        },
-        layers: [
-          {
-            id: 'arcgis-layer',
-            type: 'raster',
-            source: 'arcgis-tiles',
-          },
-        ],
-      },
-    });
-
-    map.current.on('load', async () => {
-      try {
-        const res = await fetch('/sample_web.geojson');
-        const data = await res.json();
-
-        map.current?.addSource('layer-data', {
-          type: 'geojson',
-          data,
-        });
-
-        map.current?.addLayer({
-          id: 'my-data-layer',
-          type: 'line',
-          source: 'layer-data',
-          minzoom: 12,
-          paint: {
-            'line-color': 'orange',
-            'line-width': 2,
-          },
-        });
-
-        // =========================
-        // BUILD BOUNDS
-        // =========================
-        const bounds = new LngLatBounds();
-        boundsRef.current = bounds;
-
-        data.features.forEach((feature: any) => {
-          const geom = feature.geometry;
-          if (!geom) return;
-
-          const addCoords = (coords: any) => {
-            if (
-              Array.isArray(coords) &&
-              typeof coords[0] === 'number' &&
-              typeof coords[1] === 'number'
-            ) {
-              bounds.extend(coords);
-            } else if (Array.isArray(coords)) {
-              coords.forEach(addCoords);
-            }
-          };
-
-          addCoords(geom.coordinates);
-        });
-
-        // =========================
-        // FIT ONCE ONLY (IMPORTANT)
-        // =========================
-        if (!bounds.isEmpty()) {
-          map.current?.fitBounds(bounds, {
-            padding: {
-              top: 50,
-              bottom: 30,
-              left: 100,
-              right: 30,
-            },
-            duration: 0,
-          });
-        }
-      } catch (err) {
-        console.error('GeoJSON error:', err);
-      }
-    });
-
-    map.current.on('mousemove', (e) => {
-      setLatitude(e.lngLat.lat.toFixed(4));
-      setLongitude(e.lngLat.lng.toFixed(4));
-
-      console.log(e.lngLat.lng.toFixed(4));
-      console.log(e.lngLat.lat.toFixed(4));
-    });
+  useEffect(() => {
+    useMapMouse(map.current, setLatitude, setLongitude);
 
     return () => {
       map.current?.remove();
       map.current = null;
     };
-  }, [lng, lat, zoom]);
+  }, []);
 
   useEffect(() => {
     if (!map.current) return;
 
-    map.current.easeTo({
-      padding: {
-        top: 50,
-        bottom: 30,
-        left: isOpen ? 400 : 100,
-        right: 30,
-      },
-      duration: 300,
+    const nav = new maplibregl.NavigationControl({
+      showCompass: true,
+      showZoom: false,
     });
+
+    map.current.addControl(nav, 'top-right');
+
+    return () => {
+      map.current?.removeControl(nav);
+    };
+  }, []);
+
+  useEffect(() => {
+    useMapPadding(map.current, isOpen);
   }, [isOpen]);
 
   return (
     <>
-      <div className={styles['map-container']} ref={mapContainer} />
-
+      <div ref={mapContainer} className={styles['map-container']} />
       <MapControls
         onZoomIn={() => map.current?.zoomIn()}
         onZoomOut={() => map.current?.zoomOut()}
+        onZoomToBounds={handleZoomToBounds}
       />
     </>
   );
