@@ -8,15 +8,17 @@ import styles from './Map.module.css';
 import MapControls from '../../../shared/components/map/MapControls';
 import { useTabStore } from '@/store/useTabStore';
 import { useMapStore } from '@/store/useMapStore';
+
 import { useMapInit } from '@/hooks/map/useMapInit';
 import { useGeoJsonLayer } from '@/hooks/map/useGeoJSONlayer';
 import { useMapMouse } from '@/hooks/map/useMapMouse';
 import { useMapPadding } from '@/hooks/map/usePadding';
 import { useZoomToBounds } from '@/hooks/map/useZoomToBounds';
+import { useMapParcel } from '@/hooks/map/useMapParcel';
 
 export default function MapComponent() {
   const { isOpen } = useTabStore();
-  const { setLatitude, setLongitude, bounds } = useMapStore();
+  const { setLatitude, setLongitude, bounds, setBounds } = useMapStore();
 
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
@@ -26,47 +28,58 @@ export default function MapComponent() {
   const zoom = 2;
 
   const handleZoomToBounds = () => {
+    if (!map.current) return;
     useZoomToBounds(map, bounds, isOpen);
   };
 
-  useGeoJsonLayer(map.current);
-
   useEffect(() => {
-    useGeoJsonLayer;
+    if (!mapContainer.current) return;
+
     useMapInit(mapContainer.current, map, lng, lat, zoom);
-  }, []);
 
-  useEffect(() => {
-    useMapMouse(map.current, setLatitude, setLongitude);
+    const waitForMap = () => {
+      if (!map.current) {
+        requestAnimationFrame(waitForMap);
+        return;
+      }
+
+      const mapInstance = map.current;
+
+      useGeoJsonLayer(mapInstance, setBounds);
+      useMapMouse(mapInstance, setLatitude, setLongitude);
+      useMapParcel(mapInstance);
+
+      const nav = new maplibregl.NavigationControl({
+        showCompass: true,
+        showZoom: false,
+      });
+
+      mapInstance.addControl(nav, 'top-right');
+
+      useMapPadding(mapInstance, isOpen);
+      return () => {
+        mapInstance.removeControl(nav);
+      };
+    };
+
+    const cleanup = waitForMap();
 
     return () => {
       map.current?.remove();
       map.current = null;
+      cleanup?.();
     };
   }, []);
 
   useEffect(() => {
     if (!map.current) return;
-
-    const nav = new maplibregl.NavigationControl({
-      showCompass: true,
-      showZoom: false,
-    });
-
-    map.current.addControl(nav, 'top-right');
-
-    return () => {
-      map.current?.removeControl(nav);
-    };
-  }, []);
-
-  useEffect(() => {
     useMapPadding(map.current, isOpen);
   }, [isOpen]);
 
   return (
     <>
       <div ref={mapContainer} className={styles['map-container']} />
+
       <MapControls
         onZoomIn={() => map.current?.zoomIn()}
         onZoomOut={() => map.current?.zoomOut()}

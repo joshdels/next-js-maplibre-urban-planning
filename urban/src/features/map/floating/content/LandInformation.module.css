@@ -9,15 +9,10 @@
   margin-bottom: 1.25rem;
 }
 
-.icon {
-  color: var(--lid-blue);
-  height: 24px;
-  width: 24px;
-}
-
 .data-content {
   display: flex;
   flex-direction: row;
   gap: 1.25rem;
   margin-bottom: 0.75rem;
 }
+
