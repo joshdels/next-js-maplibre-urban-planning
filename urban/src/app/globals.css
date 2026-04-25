@@ -4,6 +4,7 @@
 @import url('../shared/styles/themes.css');
 @import url('../shared/styles/font.css');
 @import url('../shared/styles/icons.css');
+@import url('../shared/styles/map.css');
 @import 'tailwindcss';
 
 :root {
