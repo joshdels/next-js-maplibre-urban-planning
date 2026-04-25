@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import maplibregl, { Map } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.css';
@@ -14,7 +14,7 @@ import { useGeoJsonLayer } from '@/hooks/map/useGeoJSONlayer';
 import { useMapMouse } from '@/hooks/map/useMapMouse';
 import { useMapPadding } from '@/hooks/map/usePadding';
 import { useZoomToBounds } from '@/hooks/map/useZoomToBounds';
-import { useMapParcel } from '@/hooks/map/useMapParcel';
+import { useParcelMap } from '@/hooks/map/useMapParcel';
 
 export default function MapComponent() {
   const { isOpen } = useTabStore();
@@ -47,7 +47,8 @@ export default function MapComponent() {
 
       useGeoJsonLayer(mapInstance, setBounds);
       useMapMouse(mapInstance, setLatitude, setLongitude);
-      useMapParcel(mapInstance);
+      useParcelMap(mapInstance);
+      useMapPadding(mapInstance, isOpen);
 
       const nav = new maplibregl.NavigationControl({
         showCompass: true,
@@ -55,8 +56,6 @@ export default function MapComponent() {
       });
 
       mapInstance.addControl(nav, 'top-right');
-
-      useMapPadding(mapInstance, isOpen);
     };
 
     waitForMap();

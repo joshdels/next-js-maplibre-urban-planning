@@ -1,31 +1,34 @@
 import { create } from 'zustand';
 
+export type Parcel = {
+  properties: Record<string, any>;
+  geometry: any;
+};
+
 export type ParcelStoreProps = {
-  selectedParcel: {
-    properties: Record<string, any>;
-    geometry: any;
-  } | null;
+  selectedParcel: Parcel | null;
+  selectedParcelId: string | number | null;
 
-  setParcel: (parcel: {
-    properties: Record<string, any>;
-    geometry: any;
-  }) => void;
-
+  setParcel: (parcel: Parcel, id: string | number) => void;
+  setSelectedParcelId: (id: string | number | null) => void;
   clearParcel: () => void;
 };
 
 export const useParcelStore = create<ParcelStoreProps>((set) => ({
   selectedParcel: null,
+  selectedParcelId: null,
 
-  setParcel: (parcel) => {
+  setParcel: (parcel, id) => {
     set({
       selectedParcel: parcel,
+      selectedParcelId: id,
     });
   },
-
+  setSelectedParcelId: (id) => set({ selectedParcelId: id }),
   clearParcel: () => {
     set({
       selectedParcel: null,
+      selectedParcelId: null,
     });
   },
 }));

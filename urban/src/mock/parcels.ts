@@ -20,7 +20,7 @@ export function buildLandInformation(parcel: Parcel) {
   return [
     { label: 'Parcel ID:', value: parcel.parcelId, icon: information24 },
     { label: 'Land Use:', value: parcel.landUseType, icon: layerVectorTile24 },
-    { label: 'Area:', value: `${parcel.totalHectares} ha`, icon: parcel24 },
+    { label: 'Area:', value: `${parcel.totalHectares} sqm`, icon: parcel24 },
     { label: 'Assessed Year:', value: parcel.assessedYear, icon: dateTime24 },
     { label: 'Value:', value: `₱ ${parcel.assessedValue}`, icon: money24 },
     { label: 'Deed:', value: parcel.typeOfDeed, icon: fileReport24 },

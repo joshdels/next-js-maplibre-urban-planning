@@ -14,6 +14,7 @@ export function useMapInit(
     center: [lng, lat],
     zoom,
     attributionControl: false,
+    maxZoom: 17,
     style: {
       version: 8,
       sources: {

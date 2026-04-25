@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Map } from 'maplibre-gl';
-import { getBounds } from '@/utils/getBounds';
+import { getBounds } from '@/utils/map/getBounds';
 
 export async function useGeoJsonLayer(map: Map, setBounds: (b: any) => void) {
   if (map.getSource('layer-data')) {
-    console.log('[GeoJSON] source already exists');
     return;
   }
 
@@ -12,6 +12,7 @@ export async function useGeoJsonLayer(map: Map, setBounds: (b: any) => void) {
 
   map.addSource('layer-data', {
     type: 'geojson',
+    promoteId: 'id',
     data,
   });
 
@@ -26,12 +27,22 @@ export async function useGeoJsonLayer(map: Map, setBounds: (b: any) => void) {
   });
 
   map.addLayer({
-    id: 'parcel-outline',
+    id: 'parcel-line',
     type: 'line',
     source: 'layer-data',
     paint: {
-      'line-color': 'orange',
-      'line-width': 2,
+      'line-color': [
+        'case',
+        ['boolean', ['feature-state', 'selected'], false],
+        '#1e7ee0',
+        '#ff8c00',
+      ],
+      'line-width': [
+        'case',
+        ['boolean', ['feature-state', 'selected'], false],
+        4,
+        2,
+      ],
     },
   });
 
