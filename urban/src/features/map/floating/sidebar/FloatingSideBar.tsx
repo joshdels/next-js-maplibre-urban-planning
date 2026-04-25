@@ -1,8 +1,14 @@
 'use client';
 
-import { clearSelection24, download24, exclamationMarkTriangle24, legend24, plans24, waterDrop24 } from '@esri/calcite-ui-icons';
 import { useTabStore } from '@/store/useTabStore';
 import styles from './FloatingSideBar.module.css';
+import {
+  clearSelection24,
+  download24,
+  exclamationMarkTriangle24,
+  legend24,
+  parcel24,
+} from '@esri/calcite-ui-icons';
 
 interface NavigationProps {
   label: string;
@@ -11,9 +17,9 @@ interface NavigationProps {
 }
 
 const navigations: NavigationProps[] = [
-  { label: 'Overview', tab: 'overview', icon: clearSelection24 },
+  { label: 'Overview', tab: 'overview', icon: parcel24 },
   { label: 'Legend', tab: 'legend', icon: legend24 },
-  { label: 'Boundaries', tab: 'boundaries', icon: plans24 },
+  { label: 'Boundaries', tab: 'boundaries', icon: clearSelection24 },
   { label: 'Hazard', tab: 'hazard', icon: exclamationMarkTriangle24 },
   { label: 'Download', tab: 'download', icon: download24 },
 ];

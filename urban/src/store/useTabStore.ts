@@ -10,8 +10,8 @@ interface TabStore {
 }
 
 export const useTabStore = create<TabStore>((set) => ({
-  activeTab: 'overview',
-  isOpen: true,
+  activeTab: '',
+  isOpen: false,
   setActiveTab: (tab: string) => set({ activeTab: tab }),
   setIsOpen: (status: boolean) => set({ isOpen: status }),
 
