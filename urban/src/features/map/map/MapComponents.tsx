@@ -7,9 +7,11 @@ import styles from './Map.module.css';
 
 import MapControls from '../../../shared/components/map/MapControls';
 import { useTabStore } from '@/store/useTabStore';
+import { useMapStore } from '@/store/useMapStore';
 
 export default function MapComponent() {
   const { isOpen } = useTabStore();
+  const { setLatitude, setLongitude } = useMapStore();
 
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<Map | null>(null);
@@ -118,6 +120,9 @@ export default function MapComponent() {
     });
 
     map.current.on('mousemove', (e) => {
+      setLatitude(e.lngLat.lat.toFixed(4));
+      setLongitude(e.lngLat.lng.toFixed(4));
+
       console.log(e.lngLat.lng.toFixed(4));
       console.log(e.lngLat.lat.toFixed(4));
     });
