@@ -43,3 +43,8 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.empty {
+  color: var(--lid-blue);
+  padding: 2rem 0;
+}

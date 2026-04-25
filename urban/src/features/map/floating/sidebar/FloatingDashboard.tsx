@@ -6,8 +6,10 @@ import OwnerInformation from '../content/OwnerInformation';
 import LandInformation from '../content/LandInformation';
 import styles from './FloatingDashboard.module.css';
 import { useTabStore } from '@/store/useTabStore';
+import { useParcelStore } from '@/store/useParcelStore';
 
 export default function FloatingDashboard() {
+  const parcel = useParcelStore((s) => s.selectedParcel);
   const { isOpen, handleClose } = useTabStore();
 
   return (
@@ -30,8 +32,16 @@ export default function FloatingDashboard() {
           </div>
         </section>
         <section>
-          <OwnerInformation />
-          <LandInformation />
+          {!parcel ? (
+            <div className={styles.empty}>
+              Please click a parcel on map to see the infomation
+            </div>
+          ) : (
+            <>
+              <OwnerInformation />
+              <LandInformation />
+            </>
+          )}
         </section>
       </main>
     </div>

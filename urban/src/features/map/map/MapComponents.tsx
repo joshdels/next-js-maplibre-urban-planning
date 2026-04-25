@@ -5,7 +5,7 @@ import maplibregl, { Map } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.css';
 
-import MapControls from '../../../shared/components/map/MapControls';
+import MapControls from '@/shared/components/map/MapControls';
 import { useTabStore } from '@/store/useTabStore';
 import { useMapStore } from '@/store/useMapStore';
 
@@ -57,17 +57,13 @@ export default function MapComponent() {
       mapInstance.addControl(nav, 'top-right');
 
       useMapPadding(mapInstance, isOpen);
-      return () => {
-        mapInstance.removeControl(nav);
-      };
     };
 
-    const cleanup = waitForMap();
+    waitForMap();
 
     return () => {
       map.current?.remove();
       map.current = null;
-      cleanup?.();
     };
   }, []);
 
