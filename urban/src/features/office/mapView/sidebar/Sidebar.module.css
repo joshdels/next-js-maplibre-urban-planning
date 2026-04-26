@@ -1,0 +1,112 @@
+.sidebar-container {
+  align-items: center;
+  background-color: var(--lid-white);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  width: 5rem;
+}
+
+.sidebar-container-open {
+  background-color: var(--lid-white);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 17rem;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.top-content {
+  display: none;
+}
+
+.top-content-open {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.top-content-open p {
+  color: var(--lid-blue);
+  font-size: 0.8rem;
+}
+
+.marker {
+  cursor: pointer;
+  justify-content: center;
+  place-items: center center;
+  position: relative;
+}
+
+.marker-open {
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: start;
+  text-align: start;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: start;
+  text-align: start;
+  transition: all 0.2s;
+}
+
+.buttons:hover {
+  color: var(--lid-blue);
+  cursor: pointer;
+}
+
+.brand {
+  display: none;
+}
+
+.brand-open {
+  background-color: var(--lid-gray-light);
+  border-radius: var(--lid-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem;
+}
+
+.brand-open h1 {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.brand-open span {
+  color: var(--lid-blue);
+  font-size: 0.8rem;
+}
+
+.none {
+  display: none;
+}

@@ -11,7 +11,9 @@ export default function Content() {
 
   return (
     <>
-      <div className={`${isOpen ? styles["container-open"]: styles.container}`}>
+      <div
+        className={`${isOpen ? styles['container-open'] : styles.container}`}
+      >
         {offices?.map((item, index) => (
           <OfficeCard key={index} {...item} />
         ))}

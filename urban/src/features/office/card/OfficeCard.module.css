@@ -1,9 +1,15 @@
-.card-container {
+.card {
   background-color: var(--lid-white);
   border-radius: var(--lid-radius-md);
   display: flex;
-  height: 20rem;
+  flex-direction: column;
+  height: 40vh;
   padding: 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .card-container aside {
@@ -31,6 +37,43 @@
 .contributors {
   display: flex;
   flex-direction: row;
+  font-weight: 500;
   gap: 0.5rem;
   margin: 2rem 0 0.5rem;
+}
+
+.list {
+  margin-left: 1.5rem;
+}
+
+.card-footer {
+  border-top: 1px solid var(--lid-gray-light);
+  color: var(--lid-gray-mid);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.icon-btn {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: var(--lid-blue);
+}
+
+.icon-btn span {
+  color: var(--lid-off-light);
+  font-size: 0.8rem;
+}
+
+.icon-btn svg {
+  font-size: 25px;
 }

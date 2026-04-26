@@ -29,10 +29,8 @@ export default function OwnerInformation() {
             <path d={item.icon} />
           </svg>
 
-          <div className={styles['data-content']}>
-            <span className={styles.label}>{item.label}</span>
-            <span className="font-semibold">{item.value}</span>
-          </div>
+          <span className={styles.label}>{item.label}</span>
+          <span className="font-semibold">{item.value}</span>
         </div>
       ))}
     </div>
